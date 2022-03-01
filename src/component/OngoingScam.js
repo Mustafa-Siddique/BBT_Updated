@@ -10,15 +10,17 @@ import {
 import { Link } from "react-router-dom";
 import { getTotoalProfile } from "./../Web3_connection/ContractMethods";
 import { initInstance } from "./../Web3_connection/web3_methods";
+import probably from '../images/probably.png'
+import scam from '../images/scam.png'
 
-export default function Ongoingcards() {
+export default function OngoingScam() {
   const [project, setProject] = useState([]);
   const [CountProfile, setProfileCount] = useState();
 
   useEffect(() => {
     client
       .fetch(
-        `*[_type=="lprojects" && trappoints > 0 && trappoints < 6] | order(trapPoints asc) {
+        `*[_type=="lprojects" && trappoints > 5] {
               name,
               id,
               tracker,
@@ -130,10 +132,11 @@ export default function Ongoingcards() {
           </div>
           
           {/* RIBBON CONTAINER FOR NEWLY LAUNCHED PROJECTS */}
-          <div id="ribbon-container" style={project.newlyLaunched === true ? { display: "block" } : { display: "none" }}>
-            <span id="ribbon">
-              New
-            </span>
+          <div id="bbt-ribbon-container" style={project.trappoints < 9 ? { display: "block" } : { display: "none" }}>
+            <img src={probably} alt="" />
+          </div>
+          <div id="bbt-ribbon-container" style={project.trappoints >= 9 ? { display: "block" } : { display: "none" }}>
+            <img src={scam} alt="" />
           </div>
           <img
             className="shadow bg-light"
@@ -158,7 +161,7 @@ export default function Ongoingcards() {
   };
 
   return (
-    <div className="row safuCards">
+    <div className="row boobyCards safuCards">
       {project.map(renderProjects)}
     </div>
   );

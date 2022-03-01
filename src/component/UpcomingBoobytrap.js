@@ -8,30 +8,33 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { getTotoalProfile } from "./../Web3_connection/ContractMethods";
-import { initInstance } from "./../Web3_connection/web3_methods";
+import { getTotoalProfile } from "../Web3_connection/ContractMethods";
+import { initInstance } from "../Web3_connection/web3_methods";
+import probably from '../images/probably.png'
+import scam from '../images/scam.png'
 
-export default function Ongoingcards() {
-  const [project, setProject] = useState([]);
+export default function UpcomingBoobytrap() {
+  const [uProject, setuProject] = useState([]);
   const [CountProfile, setProfileCount] = useState();
 
+  /* FETCH UPCOMING PROJECTS */
   useEffect(() => {
     client
       .fetch(
-        `*[_type=="lprojects" && trappoints > 0 && trappoints < 6] | order(trapPoints asc) {
+        `*[_type=="uprojects" && trappoints > 5] {
               name,
-              id,
               tracker,
               slug,
               contract,
-              trappoints,
               owner,
               marketingStatus,
               telegram,
+              id,
               twitter,
               website,
               facebook,
               discord,
+              trappoints,
               instagram,
               other,
               tgOwner,
@@ -48,7 +51,7 @@ export default function Ongoingcards() {
               description,
           }`
       )
-      .then((data) => setProject(data))
+      .then((data) => setuProject(data))
       .catch(console.error);
     const getData = async () => {
       await initInstance();
@@ -57,25 +60,23 @@ export default function Ongoingcards() {
     };
     getData();
   }, []);
-  console.log(project)
-  console.log("Total profile", CountProfile);
 
-  // RENDER PROJECTS
-  const renderProjects = (project, index) => {
+  /* RENDER UPCOMING PROJECTS */
+  const renderuProjects = (uProject, index) => {
     return (
       <div
-        className="projectCard mx-2 my-4 col-md-3 px-1 py-2 shadow"
+        className="projectCard mx-2 my-4 col-md-3 px-1 py-2 pb-3 shadow"
         key={index}
       >
         <div id="projectHead" className="d-flex justify-content-between">
           <div className="w-100 text-start" style={{ paddingLeft: "30px" }}>
             <h3 className="fs-6 mt-2 text-start">
-              {project.name} <span>({project.tracker})</span>
+              {uProject.name} <span>({uProject.tracker})</span>
             </h3>
             <a
-              href={project.telegram}
+              href={uProject.telegram}
               style={
-                project.telegram.length > 2
+                uProject.telegram.length > 2
                   ? { display: "inline-block" }
                   : { display: "none" }
               }
@@ -84,9 +85,9 @@ export default function Ongoingcards() {
               <FaTelegramPlane />
             </a>
             <a
-              href={project.twitter}
+              href={uProject.twitter}
               style={
-                project.twitter.length > 2
+                uProject.twitter.length > 2
                   ? { display: "inline-block" }
                   : { display: "none" }
               }
@@ -95,9 +96,9 @@ export default function Ongoingcards() {
               <FaTwitter />
             </a>
             <a
-              href={project.website}
+              href={uProject.website}
               style={
-                project.website.length > 2
+                uProject.website.length > 2
                   ? { display: "inline-block" }
                   : { display: "none" }
               }
@@ -106,9 +107,9 @@ export default function Ongoingcards() {
               <FaGlobe />
             </a>
             <a
-              href={project.discord}
+              href={uProject.discord}
               style={
-                project.discord !== null
+                uProject.discord !== null
                   ? { display: "inline-block" }
                   : { display: "none" }
               }
@@ -117,9 +118,9 @@ export default function Ongoingcards() {
               <FaDiscord />
             </a>
             <a
-              href={project.insta}
+              href={uProject.insta}
               style={
-                project.instagram !== null
+                uProject.instagram !== null
                   ? { display: "inline-block" }
                   : { display: "none" }
               }
@@ -128,28 +129,28 @@ export default function Ongoingcards() {
               <FaInstagram />
             </a>
           </div>
-          
           {/* RIBBON CONTAINER FOR NEWLY LAUNCHED PROJECTS */}
-          <div id="ribbon-container" style={project.newlyLaunched === true ? { display: "block" } : { display: "none" }}>
-            <span id="ribbon">
-              New
-            </span>
+          <div id="bbt-ribbon-container" style={uProject.trappoints < 9 ? { display: "block" } : { display: "none" }}>
+            <img src={probably} alt="" />
+          </div>
+          <div id="bbt-ribbon-container" style={uProject.trappoints >= 9 ? { display: "block" } : { display: "none" }}>
+            <img src={scam} alt="" />
           </div>
           <img
             className="shadow bg-light"
-            src={project.image.asset.url}
+            src={uProject.image.asset.url}
             alt=""
           />
         </div>
         <div id="projectDesc">
           <br />
-          <p className="mb-0 card-bold-points">{project.trappoints} Trap Points</p>
-          <p className="mb-0">{project.comStrength}k+ Community Strength</p>
-          <p>{project.description.length > 150 ? project.description.slice(0,150)+"..." : project.description}</p>
+          <p className="mb-0 card-bold-points">{uProject.trappoints} Trap Points</p>
+          <p className="mb-0">{uProject.comStrength}k+ Community Strength</p>
+          <p>{uProject.description.length > 150 ? uProject.description.slice(0,150)+"..." : uProject.description}</p>
         </div>
         <Link
           className="btn shadow-sm"
-          to={{ pathname: `/safehaven/ongoingprojects/${project.slug.current}/${project.id}`, state:{id:project.id} }}
+          to={{ pathname: `/boobytrap/upcomingscam/${uProject.slug.current}/${uProject.id}`, state:{id:uProject.id}}}
         >
           Details
         </Link>
@@ -158,8 +159,8 @@ export default function Ongoingcards() {
   };
 
   return (
-    <div className="row safuCards">
-      {project.map(renderProjects)}
+    <div className="row boobyCards safuCards">
+      {uProject.map(renderuProjects)}
     </div>
   );
 }

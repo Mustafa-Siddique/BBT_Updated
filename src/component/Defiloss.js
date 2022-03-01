@@ -1,5 +1,6 @@
 import React from 'react'
 import defibg from '../images/BoobyTrap Preview.png'
+import boobybg from '../images/BoobyTrap_Preview.png'
 
 export default function Defiloss() {
     return (
@@ -25,8 +26,9 @@ export default function Defiloss() {
                         <p>Booby Trap will list information on all potential Rugpulls and Honeypots, keeping track of the exploits found in their contracts and the transfers from these wallets. This dashboard will help investors make well-informed decisions.</p>
                     </div>
                 </div>
-                <div className="col w-50">
+                <div className="col w-50 position-relative overflow-hidden">
                     <img className='defibg' src={defibg} alt="" />
+                    <img style={{position:"absolute", left:"20%", top:"20%", boxShadow:"0px 0px 5px #000", borderRadius:"22px"}} className='defibg' src={boobybg} alt="" />
                 </div>
             </div>
         </div>

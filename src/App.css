@@ -795,7 +795,6 @@ body.active-modal {
   z-index: 1;
   outline: 7px solid #fff;
   outline-offset: 1px;
-  /* transform: translateY(-25px); */
 }
 .circleSocial{
   width: 100%;
@@ -882,7 +881,6 @@ body.active-modal {
 }
 
 /* Overlay Popup for Rating */
-
 .overlay-popup{
   background: rgba(49,49,49,0.8);
 }
@@ -923,4 +921,23 @@ body.active-modal {
   height: 50px;
   max-width: 200px;
   top: 35%;
+}
+
+/* Booby Trap */
+
+.boobyCards .btn{
+  color: #A82323;
+}
+.boobyCards .btn:hover{
+  background-color: #A82323;
+  color: #fff;
+}
+.boobyCards .card-bold-points{
+  color: #A82323;
+}
+#scamSidebar .nav-item .active{
+  color: #A82323;
+}
+.boobyCards .ownerCard{
+  background-color: #A82323;
 }

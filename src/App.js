@@ -21,7 +21,11 @@ import InfluencerProfile from './component/InfluencerProfile';
 import PromoterProfile from './component/PromoterProfile';
 import Ongoingcards from './component/Ongoingcards';
 import Ongoingpage from './component/Ongoingpage';
-import Boobytrap from './component/Boobytrap';
+import Boobytrap from './component/UpcomingBoobytrap';
+import PageBoobyTrap from './component/PageBoobyTrap';
+import UpcomingBoobytrap from './component/UpcomingBoobytrap';
+import OngoingScam from './component/OngoingScam';
+import OwnerScam from './component/OwnerScam';
 
 function App() {
 
@@ -33,13 +37,17 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="faqs" element={<Faqs />} />
+          <Route path="boobytrap" element={<PageBoobyTrap/>}>
+            <Route path='upcomingscam' element={<UpcomingBoobytrap/>}/>
+            <Route path='ongoingscam' element={<OngoingScam/>}/>
+            <Route path='ownerscam' element={<OwnerScam/>}/>
+          </Route>
           <Route path="safehaven" element={<Pagesafehaven />} >
             <Route path="projectowner" element={<Ownercards />} />
             <Route path="influencers" element={<Influencers />} />
             <Route path="developers" element={<Devcards />} />
             <Route path="promoters" element={<Promoters />} />
             <Route path="safuprojects" element={<Safecards/>}/>
-            <Route path="boobytrap" element={<Boobytrap/>}/>
             <Route path="upcomingprojects" element={<UpcomingCards/>}/>
             <Route path="ongoingprojects" element={<Ongoingcards/>}/>
           </Route>
@@ -50,7 +58,7 @@ function App() {
           <Route path="/safehaven/safuprojects/:slug/:id" element={<Projectpage/>}/>
           <Route path="/safehaven/ongoingprojects/:slug/:id" element={<Ongoingpage/>}/>
           <Route path="/safehaven/upcomingprojects/:slug/:id" element={<Projectpage/>}/>
-          <Route path="/safehaven/boobytrap/:slug/:id" element={<Projectpage/>}/>
+          {/* <Route path="/safehaven/boobytrap/:slug/:id" element={<Projectpage/>}/> */}
           <Route path="*" element={<Page404/>} />
         </Routes>
         <Footer />

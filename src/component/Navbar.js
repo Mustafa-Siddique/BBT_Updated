@@ -50,6 +50,9 @@ export default function Navbar() {
                                 <Link className="nav-link" to="/safehaven/safuprojects">Safe Haven</Link>
                             </li>
                             <li className="nav-item">
+                                <Link className="nav-link" to="/boobytrap">Booby Trap</Link>
+                            </li>
+                            <li className="nav-item">
                                 <a href={trapsheetpdf} target="_blank" rel="noreferrer" className="nav-link">Trapsheet</a>
                             </li>
                         </ul>

@@ -4,6 +4,7 @@ import client from "../client";
 import { initInstance } from './../Web3_connection/web3_methods'
 import {getProfile } from "./../Web3_connection/ContractMethods"
 import {useParams, useLocation } from "react-router-dom";
+import { start } from "@popperjs/core";
 
 export default function PromoterDetails() {
   // console.log("id", location.state.id)

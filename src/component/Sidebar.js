@@ -7,7 +7,6 @@ import {
   GiSandsOfTime,
   GiProgression,
 } from "react-icons/gi";
-import {MdDangerous} from 'react-icons/md'
 import {Link} from 'react-router-dom'
 
 export default function Sidebar() {
@@ -42,13 +41,6 @@ export default function Sidebar() {
                   className={window.location.pathname.includes("ongoingprojects") === true || sidebar === 2 ? "nav-link active" : "nav-link"} to="/safehaven/ongoingprojects" onClick={() => activeSidebar(2)}
                 >
                   <GiSandsOfTime /> Ongoing Projects
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className={window.location.pathname.includes("boobytrap") === true || sidebar === 8 ? "nav-link active" : "nav-link"} to="/safehaven/boobytrap" onClick={() => activeSidebar(8)}
-                >
-                  <MdDangerous /> Booby Trap
                 </Link>
               </li>
               <li className="nav-item">

@@ -4,13 +4,13 @@ import { FaTelegramPlane, FaTwitter } from "react-icons/fa";
 import {Link} from 'react-router-dom'
 
 
-export default function Ownercards() {
+export default function OwnerScam() {
 
     const [owner, setOwner] = useState([]);
 
     useEffect(() => {
       client.fetch(
-          `*[_type=="owners" && trappoints > 0 && trappoints < 6] | order(trapPoints asc) {
+          `*[_type=="owners" && trapPoints > 5] {
               name,
               alias,
               trapPoints,
@@ -44,7 +44,7 @@ export default function Ownercards() {
         )
     }
     return (
-        <div className='row' id='owner-card-cont'>
+        <div className='row boobyCards' id='owner-card-cont'>
             {owner.map(renderOwner)}
             {console.log(owner)}
         </div>
