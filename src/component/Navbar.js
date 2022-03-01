@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import logo from "../images/logo.png"
-import trapsheetpdf from '../whitepaper/trapsheet-v2-launch-tokenomics.pdf'
+import trapsheetpdf from '../whitepaper/BBT _TrapSheet_V3.pdf'
 import { Link } from 'react-router-dom'
 import { loginProcess, initInstance, getAccount } from "./../Web3_connection/web3_methods"
 import { getTokenBalance, symbol } from './../Web3_connection/ContractMethods'

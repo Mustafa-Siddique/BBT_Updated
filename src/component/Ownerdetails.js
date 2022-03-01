@@ -41,6 +41,7 @@ export default function Ownerdetails(props) {
                 name,
                 tracker,
                 slug,
+                id,
                 telegram,
                 twitter,
                 website,
@@ -60,6 +61,7 @@ export default function Ownerdetails(props) {
                 name,
                 tracker,
                 slug,
+                id,
                 telegram,
                 twitter,
                 website,
@@ -116,7 +118,7 @@ export default function Ownerdetails(props) {
         {singleOwner.uprojects &&
           singleOwner.uprojects.map((upcoming, index) => {
             return (
-              <div className="projectCard mx-2 my-4 col-md-3 px-3 py-2 shadow" key={index}>
+              <div className="projectCard mx-2 my-4 col-md-3 px-3 pt-2 pb-4 shadow" key={index}>
                 <div id="projectHead" className="d-flex">
                   <div className="m-auto">
                     <h3 className="fs-6">
@@ -188,7 +190,7 @@ export default function Ownerdetails(props) {
                   <br />
                     <p>{upcoming.description.length > 150 ? upcoming.description.slice(0,150)+"..." : upcoming.description}</p>
                 </div>
-                <Link className="btn shadow-sm" to="/">
+                <Link className="btn shadow-sm"  to={{ pathname: `/safehaven/upcomingprojects/${upcoming.slug.current}/${upcoming.id}`, state:{id:upcoming.id}}}>
                   Details
                 </Link>
               </div>
@@ -213,7 +215,7 @@ export default function Ownerdetails(props) {
         {singleOwner.lprojects &&
           singleOwner.lprojects.map((launched, index) => {
             return (
-              <div className="projectCard mx-2 my-4 col-md-3 px-3 py-2 shadow" key={index}>
+              <div className="projectCard mx-2 my-4 col-md-3 px-3 pt-2 pb-4 shadow" key={index}>
                 <div id="projectHead" className="d-flex">
                   <div className="m-auto">
                     <h3 className="fs-6">
@@ -296,7 +298,7 @@ export default function Ownerdetails(props) {
                   <br />
                     <p>{launched.description.length > 150 ? launched.description.slice(0,150)+"..." : launched.description}</p>
                 </div>
-                <Link className="btn shadow-sm" to={{ pathname: `/safehaven/safuprojects/${launched.slug.current}`}}>
+                <Link className="btn shadow-sm" to={{ pathname: `/safehaven/ongoingprojects/${launched.slug.current}/${launched.id}`, state:{id:launched.id}}}>
                   Details
                 </Link>
               </div>

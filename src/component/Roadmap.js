@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import Mobmap from '../component/Mobmap';
-import trapsheet from '../whitepaper/trapsheet-v2-launch-tokenomics.pdf'
+import trapsheet from '../whitepaper/BBT _TrapSheet_V3.pdf'
 // import { FaCode, FaPencilAlt, FaEnvelope, FaChartLine } from "react-icons/fa";
 
 export default function Roadmap() {
