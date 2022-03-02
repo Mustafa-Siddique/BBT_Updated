@@ -16,7 +16,9 @@ export default function InEligible() {
     <div style={{width:"100%", height:"100vh"}}>
       <div style={{position:"absolute", top:"50%", left:"50%", transform:"translate(-50%, -50%)", textAlign:"center", padding:"25px 50px"}}>
         <h2>YOU DO NOT HODL THE MINIMUM REQUIRED ({BBTLimit} $BBT) TOKENS TO ACCESS SAFE HAVEN</h2>
+        <a href='https://pancakeswap.finance/swap' target='_blank'><button className='getaccess'>GET ACCESS</button></a>
       </div>
+      
     </div>
   )
 }

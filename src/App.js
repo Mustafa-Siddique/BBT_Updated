@@ -54,6 +54,19 @@ function App() {
     fetchBal()
   }, [])
 
+  if(BBTLimit){
+    console.log(BBTBal,BBTLimit.minBal)
+  }
+  try{
+    window.ethereum.on('accountsChanged', function (accounts) {
+      window.location.reload();
+    })
+  }
+  catch(e){
+    //
+  }
+  
+
   return (
     <div className="App" id='App'>
       <Router>
@@ -80,7 +93,7 @@ function App() {
           <Route path="/boobytrap/scampromoter/:slug/:id/" element={<PromoterProfile/>}/>
 
           {/* Routes for Safe Haven */}
-        {BBTLimit && BBTBal >= BBTLimit.minBal ? <>
+        { BBTBal >= 150000 ? <>
             <Route path="safehaven" element={<Pagesafehaven />} >
               <Route path="projectowner" element={<Ownercards />} />
               <Route path="influencers" element={<Influencers />} />

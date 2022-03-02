@@ -942,3 +942,16 @@ body.active-modal {
 .boobyCards .ownerCard{
   background-color: #A82323;
 }
+
+.getaccess{
+  text-decoration: none;
+  background-color: #355A9B;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+
+.getaccess:hover{
+  background-color: #264579;
+}

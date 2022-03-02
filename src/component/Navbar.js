@@ -8,17 +8,19 @@ import SidebarSlide from './SidebarSlide'
 import client from '../client';
 import {getBBTBalance} from '../Web3_connection/ContractMethods'
 import { FaTelegramPlane } from "react-icons/fa";
+import Spinner from './Spinner/Spinner'
 
 export default function Navbar() {
 
     // Fetch required number of Tokens for accessing Safe Haven
   const [BBTLimit, setBBTLimit] = useState(undefined)
+
   useEffect(() => {
     client.fetch(
       `*[_type == "minHolding"]{
         minBal,
       }`
-    ).then((data) => setBBTLimit(data[0])).catch(console.error)
+    ).then((data) => console.log(data)).catch(console.error)
   }, []);
   
 
@@ -33,7 +35,7 @@ export default function Navbar() {
 
 
     const [tokenBal, setTokenBal] = useState(0)
-    const [tokensymbol, setSymbol] = useState("")
+    const [tokensymbol, setSymbol] = useState()
     useEffect(() => {
         login();
 
@@ -57,6 +59,8 @@ export default function Navbar() {
             setUserAddress(user)
         }
     }
+
+
     return (
         <div id='navbar-container'>
             <nav className="navbar mx-auto navbar-expand-lg navbar-light">
@@ -71,7 +75,7 @@ export default function Navbar() {
                                 <Link className="nav-link" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to={BBTLimit && BBTBal >= BBTLimit.minBal ?`/safehaven/safuprojects`:`/ineligible`}>Safe Haven</Link>
+                                {BBTBal >= 150000 ? <Link className="nav-link" to={`/safehaven/safuprojects`}>Safe Haven</Link> : <Link className="nav-link" to={`/ineligible`}>Safe Haven</Link>}
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/boobytrap/upcomingscam">Booby Trap</Link>
@@ -98,7 +102,7 @@ export default function Navbar() {
                                         </li>
                                     </ul></li>
                             </ul></div>
-                        <p className='btn btn-outline-dark m-1'>Reward Balance: {tokenBal} {tokensymbol}</p>
+                        {tokensymbol ? <p className='btn btn-outline-dark m-1'>Reward Balance: {tokenBal} {tokensymbol}</p> : <p className='btn btn-outline-dark m-1 d-flex'>Reward Balance: <Spinner size={25}/></p>}
                         <button type="button" className="btn button-blue m-1" onClick={() => login()}>{userAddress ? `${userAddress.slice(0, 5)}...${userAddress.slice(38)}` : `Connect Wallet`}</button>
 
                     </div>
