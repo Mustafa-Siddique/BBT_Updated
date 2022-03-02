@@ -10,7 +10,7 @@ export default function Ownercards() {
 
     useEffect(() => {
       client.fetch(
-          `*[_type=="owners" && trappoints > 0 && trappoints < 6] | order(trapPoints asc) {
+          `*[_type=="owners" && trappoints < 6] | order(trapPoints asc) {
               name,
               alias,
               trapPoints,
@@ -37,7 +37,7 @@ export default function Ownercards() {
                 <div id="trap-points" className='mt-1'>{owner.trapPoints} Trap Points</div>
                 <div id="dev-name" className='mb-0 lh-sm'>{owner.name}</div>
                 <div id="alias" className='lh-sm'>{owner.alias}</div>
-                <div id="social-dev"><Link to="/"><FaTelegramPlane size={25} fill={"#fff"}/></Link> &nbsp;<Link to="/"><FaTwitter size={25} fill={"#fff"}/></Link></div>
+                <div id="social-dev"><a href={owner.telegram} target="_blank" rel="noreferrer"><FaTelegramPlane size={25} fill={"#fff"}/></a> &nbsp;<a href={owner.twitter}><FaTwitter size={25} fill={"#fff"}/></a></div>
                 <Link className="btn shadow-sm" to={{pathname:`/safehaven/projectowner/${owner.slug.current}/${owner.id}`, state:{id:owner.id[index]}}}>Projects</Link>
                 {/* <Link className="btn shadow-sm" to={`/safehaven/projectowner/${owner.slug.current}`} >Projects</Link> */}
             </div>

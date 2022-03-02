@@ -496,6 +496,7 @@ body.active-modal {
 }
 .bm-item-list {
   color: #b8b7ad;
+  overflow: scroll;
 }
 .bm-overlay {
   background: rgba(0, 0, 0, 0.466);

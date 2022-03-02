@@ -1,6 +1,7 @@
 export const envprod = {
     React_App_Testnet: '0x9Ab4A65b52a4F52eBd22e2CA43f3Dec4e46a515a',
     React_App_MAINNET: '0x2EffB2656506c45d3D7661e2944A8879C7a94401',
+    React_App_BBT: '0x609b88f5a4aBB7A55bA0c6d255C3F1b1bC7A4D76',
     REACT_APP_RPCURL_TESTNET:"https://data-seed-prebsc-1-s1.binance.org:8545/",
     REACT_APP_RPCURL_MAINNET:"https://bsc-dataseed.binance.org/",
     React_App_chain_Id:56,

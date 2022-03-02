@@ -3,17 +3,16 @@ import client from '../client'
 import { FaTelegramPlane, FaTwitter, FaInstagram } from "react-icons/fa";
 import {Link} from 'react-router-dom'
 
-export default function Influencers() {
+export default function InfluencerScam() {
 
     const [influencer, setInfluencer] = useState([]);
-
     useEffect(() => {
       client.fetch(
-          `*[_type=="influencers" && trappoints < 6] {
+          `*[_type=="influencers" && trappoints > 5] {
               name,
               alias,
-              id,
               trappoints,
+              id,
               slug,
               telegram,
               instagram,
@@ -47,7 +46,7 @@ export default function Influencers() {
         )
     }
     return (
-        <div className='row mt-3' id='owner-card-cont'>
+        <div className='row boobyCards mt-3' id='owner-card-cont'>
             {influencer.map(renderDev)}
         </div>
     )

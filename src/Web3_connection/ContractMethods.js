@@ -1,6 +1,7 @@
 import { getAccount, getContract,initInstance } from "./web3_methods";
 import { ABI } from './../ABI/Rating';
 import { TokenABI } from "../ABI/TokenABI";
+import {BBT} from '../ABI/BBTToken'
 import { envprod } from "./Envrionments";
 import { getWeb3 } from "./web3";
 
@@ -41,7 +42,7 @@ export const TokenContract = async()=>{
 export const getTokenBalance = async()=> {
     const contract = getContract(TokenABI,envprod.React_App_Token)
     const balance = await contract.methods.balanceOf(await getAccount()).call();
-    return balance
+    return Number(balance)
 }
 
 export const BNBBalance = async()=>{
@@ -62,3 +63,9 @@ export const symbol = async()=>{
     return sym;
 }
 
+export const getBBTBalance = async()=> {
+    await initInstance();
+    const contract = getContract(BBT,envprod.React_App_BBT)
+    const balance = await contract.methods.balanceOf(await getAccount()).call();
+    return Number(balance)/10**18
+}

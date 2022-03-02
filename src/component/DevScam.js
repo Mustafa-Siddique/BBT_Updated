@@ -3,19 +3,19 @@ import client from '../client'
 import { FaTelegramPlane, FaGithub } from "react-icons/fa";
 import {Link} from 'react-router-dom'
 
-export default function Devcards() {
+export default function DevScam() {
 
     const [dev, setDev] = useState([]);
 
     useEffect(() => {
       client.fetch(
-          `*[_type=="developers" && trappoints < 6] {
+          `*[_type=="developers" && trappoints > 5] {
               name,
               alias,
-              trappoints,
               id,
               slug,
               telegram,
+              trappoints,
               twitter,
               github,
               numProjects,
@@ -48,7 +48,7 @@ export default function Devcards() {
         )
     }
     return (
-        <div className='row mt-3' id='owner-card-cont'>
+        <div className='row boobyCards mt-3' id='owner-card-cont'>
             {dev.map(renderDev)}
         </div>
     )

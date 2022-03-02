@@ -3,24 +3,24 @@ import client from '../client'
 import { FaTelegramPlane, FaTwitter, FaInstagram } from "react-icons/fa";
 import {Link} from 'react-router-dom'
 
-export default function Promoters() {
+export default function PromoterScam() {
 
     const [promoter, setPromoters] = useState([]);
 
     useEffect(() => {
       client.fetch(
-          `*[_type=="amagroups" && trappoints < 6] {
+          `*[_type=="amagroups" && trappoints > 5] {
               name,
               alias,
               id,
               slug,
+              trappoints,
               telegram,
               instagram,
               avgCost,
               twitter,
               engagementRating,
               groupowner,
-              trappoints,
               experience,
               tgOwner,
               admin,
@@ -55,7 +55,7 @@ export default function Promoters() {
         )
     }
     return (
-        <div className='row mt-3' id='owner-card-cont'>
+        <div className='row boobyCards mt-3' id='owner-card-cont'>
             {promoter.map(renderDev)}
         </div>
     )

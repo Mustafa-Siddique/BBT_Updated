@@ -5,9 +5,33 @@ import { Link } from 'react-router-dom'
 import { loginProcess, initInstance, getAccount } from "./../Web3_connection/web3_methods"
 import { getTokenBalance, symbol } from './../Web3_connection/ContractMethods'
 import SidebarSlide from './SidebarSlide'
+import client from '../client';
+import {getBBTBalance} from '../Web3_connection/ContractMethods'
 import { FaTelegramPlane } from "react-icons/fa";
 
 export default function Navbar() {
+
+    // Fetch required number of Tokens for accessing Safe Haven
+  const [BBTLimit, setBBTLimit] = useState(undefined)
+  useEffect(() => {
+    client.fetch(
+      `*[_type == "minHolding"]{
+        minBal,
+      }`
+    ).then((data) => setBBTLimit(data[0])).catch(console.error)
+  }, []);
+  
+
+  const [BBTBal, setBBTBal] = useState(0)
+  useEffect(() => {
+    const fetchBal = async() => {
+      let currentBal = await getBBTBalance()
+      setBBTBal(currentBal)
+    }
+    fetchBal()
+  }, [])
+
+
     const [tokenBal, setTokenBal] = useState(0)
     const [tokensymbol, setSymbol] = useState("")
     useEffect(() => {
@@ -47,10 +71,10 @@ export default function Navbar() {
                                 <Link className="nav-link" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/safehaven/safuprojects">Safe Haven</Link>
+                                <Link className="nav-link" to={BBTLimit && BBTBal >= BBTLimit.minBal ?`/safehaven/safuprojects`:`/ineligible`}>Safe Haven</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/boobytrap">Booby Trap</Link>
+                                <Link className="nav-link" to="/boobytrap/upcomingscam">Booby Trap</Link>
                             </li>
                             <li className="nav-item">
                                 <a href={trapsheetpdf} target="_blank" rel="noreferrer" className="nav-link">Trapsheet</a>

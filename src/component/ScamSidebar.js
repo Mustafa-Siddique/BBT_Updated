@@ -36,35 +36,35 @@ export default function ScamSidebar() {
               </li>
               <li className="nav-item">
                 <Link
-                  className={window.location.pathname.includes("ownerscam") === true ? "nav-link active" : "nav-link"} to="/boobytrap/ownerscam" onClick={() => activeSidebar(3)}
+                  className={window.location.pathname.includes("scamowner") === true ? "nav-link active" : "nav-link"} to="/boobytrap/scamowner" onClick={() => activeSidebar(3)}
                 >
                   <FaBusinessTime /> Project Owners
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
-                  className={window.location.pathname.includes("developers") === true ? "nav-link active" : "nav-link"} to="/safehaven/developers" onClick={() => activeSidebar(4)}
+                  className={window.location.pathname.includes("scamdev") === true ? "nav-link active" : "nav-link"} to="/boobytrap/scamdev" onClick={() => activeSidebar(4)}
                 >
                   <FaLaptopCode /> Developers
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
-                  className={window.location.pathname.includes("influencers") === true ? "nav-link active" : "nav-link"} to="/safehaven/influencers" onClick={() => activeSidebar(5)}
+                  className={window.location.pathname.includes("scaminfluencer") === true ? "nav-link active" : "nav-link"} to="/boobytrap/scaminfluencer" onClick={() => activeSidebar(5)}
                 >
                   <GiChessKing /> Influencers
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
-                  className={window.location.pathname.includes("promoters") === true ? "nav-link active" : "nav-link"} to="/safehaven/promoters" onClick={() => activeSidebar(6)}
+                  className={window.location.pathname.includes("scampromoter") === true ? "nav-link active" : "nav-link"} to="/boobytrap/scampromoter" onClick={() => activeSidebar(6)}
                 >
                   <GiChart /> AMA/Call Channels
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
-                  className={window.location.pathname.includes("influencers") === true ? "nav-link active" : "nav-link"} to="/safehaven/promoters" onClick={() => activeSidebar(7)}
+                  className={window.location.pathname.includes("scaminfluencer") === true ? "nav-link active" : "nav-link"} to="/boobytrap/scaminfluencer" onClick={() => activeSidebar(7)}
                 >
                   <FaCode /> Other Services
                 </Link>
