@@ -41,7 +41,7 @@ function App() {
       `*[_type == "minHolding"]{
         minBal,
       }`
-    ).then((data) => setBBTLimit(data[0])).catch(console.error)
+    ).then((data) => setBBTLimit(data[0].minBal)).catch(console.error)
   }, []);
   
 
@@ -55,7 +55,7 @@ function App() {
   }, [])
 
   if(BBTLimit){
-    console.log(BBTBal,BBTLimit.minBal)
+    console.log(BBTBal,BBTLimit)
   }
   try{
     window.ethereum.on('accountsChanged', function (accounts) {
@@ -65,7 +65,6 @@ function App() {
   catch(e){
     //
   }
-  
 
   return (
     <div className="App" id='App'>
@@ -93,7 +92,7 @@ function App() {
           <Route path="/boobytrap/scampromoter/:slug/:id/" element={<PromoterProfile/>}/>
 
           {/* Routes for Safe Haven */}
-        { BBTBal >= 150000 ? <>
+        { BBTBal >= BBTLimit ? <>
             <Route path="safehaven" element={<Pagesafehaven />} >
               <Route path="projectowner" element={<Ownercards />} />
               <Route path="influencers" element={<Influencers />} />

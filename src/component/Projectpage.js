@@ -21,6 +21,7 @@ import {
 } from "./../Web3_connection/ContractMethods";
 import { initInstance } from "./../Web3_connection/web3_methods";
 import Sidebar from "./Sidebar";
+import ScamSidebar from "./ScamSidebar";
 
 export default function Projectpage() {
   const [singleProject, setSingleProject] = useState([]);
@@ -43,6 +44,7 @@ export default function Projectpage() {
                 tracker,
                 slug,
                 contract,
+                trappoints,
                 audit,
                 kyc,
                 marketingWallet,
@@ -94,7 +96,6 @@ export default function Projectpage() {
   const [avgRating, setavgRating] = useState();
   const [modal, setModal] = useState(false);
   const [countreview, setCountReview] = useState(0);
-  const [trappoint, setTrapPoint] = useState(0);
   const [name, setName] = useState("");
 
   const toggleModal = () => {
@@ -149,7 +150,6 @@ export default function Projectpage() {
     const data = await getProfile(id);
     // console.log("getprofile",data)
     setName(data.name);
-    setTrapPoint(data.trapPoints);
     setCountReview(data.reviewsCount);
     setavgRating(data.avgRating / 10);
   };
@@ -178,7 +178,7 @@ export default function Projectpage() {
 
   return (
     <div id="pagesafe-cont" className="owner-prof-cont projectpage-cont">
-      <div className="safe-head py-3 position-relative container-fluid">
+      <div style={window.location.pathname.includes("/boobytrap/") === true? {backgroundColor:"#A82323"}:{backgroundColor:"#204788"}} className="safe-head py-3 position-relative container-fluid">
         <div className="head-content row">
           <Breadcrumb>
             <AiFillLeftCircle size={25} color="#fff" />
@@ -195,7 +195,7 @@ export default function Projectpage() {
                 <span className="review-star fs-5"> {start(avgRating)} </span> (
                 {countreview} Reviews)
               </div>
-              <p className="my-1">{trappoint} Trap Points</p>
+              <p className="my-1">{singleProject.trappoints} Trap Points</p>
               <p>
                 0 Trap Points means the safest! lower trap points means safer!
                 Read more about{" "}
@@ -319,7 +319,7 @@ export default function Projectpage() {
 
       <div className="safe-content row w-100 mt-3">
         <div className={`sidebar col-lg-3`}>
-          <Sidebar />
+          {window.location.pathname.includes("/boobytrap/") === true? <ScamSidebar/>:<Sidebar />}
         </div>
         <div className="content col">
           <Projectdetails />

@@ -20,7 +20,7 @@ export default function Navbar() {
       `*[_type == "minHolding"]{
         minBal,
       }`
-    ).then((data) => console.log(data)).catch(console.error)
+    ).then((data) => setBBTLimit(data[0].minBal)).catch(console.error)
   }, []);
   
 
@@ -75,7 +75,7 @@ export default function Navbar() {
                                 <Link className="nav-link" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                {BBTBal >= 150000 ? <Link className="nav-link" to={`/safehaven/safuprojects`}>Safe Haven</Link> : <Link className="nav-link" to={`/ineligible`}>Safe Haven</Link>}
+                                {BBTBal >= BBTLimit ? <Link className="nav-link" to={`/safehaven/safuprojects`}>Safe Haven</Link> : <Link className="nav-link" to={`/ineligible`}>Safe Haven</Link>}
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/boobytrap/upcomingscam">Booby Trap</Link>
@@ -108,7 +108,7 @@ export default function Navbar() {
                     </div>
                     <div className="mob-nav">
                         <a href="https://t.me/boobytrapbsc" target="_blank" rel="noreferrer" className="btn btn-sm btn-outline-dark m-1"><FaTelegramPlane/></a>
-                        <button type="button" className="btn btn-sm button-blue m-1" >Connect Wallet</button>
+                        <button type="button" className="btn button-blue m-1" onClick={() => login()}>{userAddress ? `${userAddress.slice(0, 5)}...${userAddress.slice(38)}` : `Connect Wallet`}</button>
                         <SidebarSlide right />
                     </div>
                 </div>

@@ -212,7 +212,6 @@ export default function Ongoingpage() {
                             <img className="projectImg" src={singleProject.image.asset.url} alt={singleProject.name} />
                         )}
                         <div className="circleSocial">
-                            {console.log(singleProject.owner)}
                             <a href={singleProject.telegram} id="circleIco" className="circle1"><FaTelegramPlane /></a>
                             <a href={singleProject.twitter} id="circleIco" className="circle2"><FaTwitter /></a>
                             <a href={singleProject.website} id="circleIco" className="circle3"><FaGlobe /></a>

@@ -15,6 +15,7 @@ import { addReview, getProfile } from "./../Web3_connection/ContractMethods";
 import { initInstance } from "./../Web3_connection/web3_methods";
 import Sidebar from "./Sidebar";
 import PromoterDetails from "./PromoterDetails";
+import ScamSidebar from "./ScamSidebar";
 
 export default function PromoterProfile() {
   const [singlePromoter, setSinglePromoter] = useState([]);
@@ -147,7 +148,7 @@ export default function PromoterProfile() {
   return (
     <div id="pagesafe-cont" className="owner-prof-cont">
       <ToastContainer />
-      <div className="safe-head py-3 position-relative container-fluid">
+      <div style={window.location.pathname.includes("/boobytrap/") == true? {backgroundColor:"#A82323"}:{backgroundColor:"#204788"}} className="safe-head py-3 position-relative container-fluid">
         <div className="head-content row">
           <Breadcrumb>
             <AiFillLeftCircle size={25} color="#fff" />
@@ -234,7 +235,7 @@ export default function PromoterProfile() {
       )}
       <div className="safe-content row mt-3 w-100">
         <div className={`sidebar col-lg-3`}>
-          <Sidebar/>
+          {window.location.pathname.includes("/boobytrap/") == true? <ScamSidebar/>:<Sidebar />}
         </div>
         <div className="content col">
           <PromoterDetails />

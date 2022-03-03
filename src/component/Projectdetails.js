@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import client from '../client'
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import BlockContent from "@sanity/block-content-to-react";
 import ScriptTag from 'react-script-tag';
 
@@ -57,6 +57,16 @@ export default function Projectdetails() {
         ).then((data) => setSingleProject(data[0]))
     }, [slug])
     
+    // Fetch owner
+    const [ownerName, setOwnerName] = useState([])
+    useEffect(async() => {
+        client.fetch(
+            `*[_id == "${singleProject.owner._ref}"] {
+                name,
+            }`
+        ).then((data) => setOwnerName(data[0]))
+    }, [])
+    
     return (
         <div className="row justify-content-center">
             <div style={window.location.pathname.includes("upcoming") === true? {display:"block"}:{display:"none"}}>
@@ -67,6 +77,7 @@ export default function Projectdetails() {
                     <li className='card-bold-points font-monospace'><b>Trap Points:</b> {singleProject.trappoints}</li>
                     <li><b>Email:</b> {singleProject.email}</li>
                     <li><b>Contract:</b> {singleProject.contract}</li>
+                    <li><b>Owner Name:</b> {ownerName.name}</li>
                     <li><b>Project Status:</b> {singleProject.newlyLaunched === true ? "Recently Launched" : singleProject.devStatus}{singleProject.status}</li>
                     <li><b>Community Strength:</b> {singleProject.comStrength}k+</li>
                     <li><b>KYC Link:</b> {singleProject.kyc}</li>
