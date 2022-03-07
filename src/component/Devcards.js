@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import client from '../client'
 import { FaTelegramPlane, FaGithub } from "react-icons/fa";
 import {Link} from 'react-router-dom'
+import InEligible from './InEligible';
 
-export default function Devcards() {
+export default function Devcards({balance}) {
 
     const [dev, setDev] = useState([]);
 
@@ -47,9 +48,12 @@ export default function Devcards() {
             </div>
         )
     }
+    console.log("developers",balance)
     return (
-        <div className='row mt-3' id='owner-card-cont'>
+        <>
+        {<div className='row mt-3' id='owner-card-cont'>
             {dev.map(renderDev)}
-        </div>
+        </div>}
+        </>
     )
 }

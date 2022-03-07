@@ -65,7 +65,7 @@ function App() {
   catch(e){
     //
   }
-
+  console.log("balance is ",BBTBal)
   return (
     <div className="App" id='App'>
       <Router>
@@ -92,23 +92,23 @@ function App() {
           <Route path="/boobytrap/scampromoter/:slug/:id/" element={<PromoterProfile/>}/>
 
           {/* Routes for Safe Haven */}
-        { BBTBal >= BBTLimit ? <>
-            <Route path="safehaven" element={<Pagesafehaven />} >
-              <Route path="projectowner" element={<Ownercards />} />
-              <Route path="influencers" element={<Influencers />} />
-              <Route path="developers" element={<Devcards />} />
-              <Route path="promoters" element={<Promoters />} />
-              <Route path="safuprojects" element={<Safecards/>}/>
-              <Route path="upcomingprojects" element={<UpcomingCards/>}/>
-              <Route path="ongoingprojects" element={<Ongoingcards/>}/>
+        { true ? <>
+            <Route path="safehaven" element={<Pagesafehaven balance={BBTBal}/>} >
+              <Route path="projectowner" element={<Ownercards balance={BBTBal}/>} />
+              <Route path="influencers" element={<Influencers balance={BBTBal}/>} />
+              <Route path="developers" element={<Devcards balance={BBTBal}/>} />
+              <Route path="promoters" element={<Promoters balance={BBTBal}/>} />
+              <Route path="safuprojects" element={<Safecards balance={BBTBal}/>}/>
+              <Route path="upcomingprojects" element={<UpcomingCards balance={BBTBal}/>}/>
+              <Route path="ongoingprojects" element={<Ongoingcards balance={BBTBal}/>}/>
             </Route>
-          <Route path="/safehaven/projectowner/:slug/:id/" element={<Ownerprofile />}/>
-          <Route path="/safehaven/developers/:slug/:id/" element={<Devprofile />}/>
-          <Route path="/safehaven/influencers/:slug/:id/" element={<InfluencerProfile/>}/>
-          <Route path="/safehaven/promoters/:slug/:id/" element={<PromoterProfile/>}/>
-          <Route path="/safehaven/safuprojects/:slug/:id" element={<Projectpage/>}/>
-          <Route path="/safehaven/ongoingprojects/:slug/:id" element={<Ongoingpage/>}/>
-          <Route path="/safehaven/upcomingprojects/:slug/:id" element={<Projectpage/>}/>
+          <Route path="/safehaven/projectowner/:slug/:id/" element={<Ownerprofile balance={BBTBal}/>}/>
+          <Route path="/safehaven/developers/:slug/:id/" element={<Devprofile balance={BBTBal}/>}/>
+          <Route path="/safehaven/influencers/:slug/:id/" element={<InfluencerProfile balance={BBTBal}/>}/>
+          <Route path="/safehaven/promoters/:slug/:id/" element={<PromoterProfile balance={BBTBal}/>}/>
+          <Route path="/safehaven/safuprojects/:slug/:id" element={<Projectpage balance={BBTBal}/>}/>
+          <Route path="/safehaven/ongoingprojects/:slug/:id" element={<Ongoingpage balance={BBTBal}/>}/>
+          <Route path="/safehaven/upcomingprojects/:slug/:id" element={<Projectpage balance={BBTBal}/>}/>
           </>
          : <Route path='safehaven' element={<InEligible/>} />}
           

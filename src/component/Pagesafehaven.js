@@ -6,8 +6,9 @@ import {
 import { Link, Outlet } from "react-router-dom";
 import Coin from "./Coin";
 import Sidebar from "./Sidebar";
+import InEligible from "./InEligible";
 
-export default function Pagesafehaven() {
+export default function Pagesafehaven({balance}) {
 
   const toggleSort = (e) => {
     const checked = e.target.checked;
@@ -21,7 +22,8 @@ export default function Pagesafehaven() {
   };
 
   return (
-    <div id="pagesafe-cont">
+    <>
+    {balance > 150000 ? <div id="pagesafe-cont">
       <div className="safe-head py-3 position-relative container-fluid">
         <div className="head-content">
           <Breadcrumb>
@@ -128,6 +130,7 @@ export default function Pagesafehaven() {
           <Outlet />
         </div>
       </div>
-    </div>
+    </div> : <InEligible/>}
+    </>
   );
 }

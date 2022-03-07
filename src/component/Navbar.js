@@ -102,7 +102,7 @@ export default function Navbar() {
                                         </li>
                                     </ul></li>
                             </ul></div>
-                        {tokensymbol ? <p className='btn btn-outline-dark m-1'>Reward Balance: {tokenBal} {tokensymbol}</p> : <p className='btn btn-outline-dark m-1 d-flex'>Reward Balance: <Spinner size={25}/></p>}
+                        {tokensymbol ? <p className='btn btn-outline-dark m-1'>Reward Balance: {tokenBal} {tokensymbol}</p> : <p className='btn btn-outline-dark m-1 d-flex'>Reward Balance:&nbsp;&nbsp; <Spinner size={25}/></p>}
                         <button type="button" className="btn button-blue m-1" onClick={() => login()}>{userAddress ? `${userAddress.slice(0, 5)}...${userAddress.slice(38)}` : `Connect Wallet`}</button>
 
                     </div>
