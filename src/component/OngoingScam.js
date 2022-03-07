@@ -67,6 +67,7 @@ export default function OngoingScam() {
     return (
       <div
         className="projectCard mx-2 my-4 col-md-3 px-1 py-2 shadow"
+        style={{backgroundColor:"#A82323", color:"#fff"}}
         key={index}
       >
         <div id="projectHead" className="d-flex justify-content-between">
@@ -76,6 +77,7 @@ export default function OngoingScam() {
             </h3>
             <a
               href={project.telegram}
+              className="text-light"
               style={
                 project.telegram.length > 2
                   ? { display: "inline-block" }
@@ -87,6 +89,7 @@ export default function OngoingScam() {
             </a>
             <a
               href={project.twitter}
+              className="text-light"
               style={
                 project.twitter.length > 2
                   ? { display: "inline-block" }
@@ -98,6 +101,7 @@ export default function OngoingScam() {
             </a>
             <a
               href={project.website}
+              className="text-light"
               style={
                 project.website.length > 2
                   ? { display: "inline-block" }
@@ -109,6 +113,7 @@ export default function OngoingScam() {
             </a>
             <a
               href={project.discord}
+              className="text-light"
               style={
                 project.discord !== null
                   ? { display: "inline-block" }
@@ -120,6 +125,7 @@ export default function OngoingScam() {
             </a>
             <a
               href={project.insta}
+              className="text-light"
               style={
                 project.instagram !== null
                   ? { display: "inline-block" }

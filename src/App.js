@@ -43,7 +43,6 @@ function App() {
       }`
     ).then((data) => setBBTLimit(data[0].minBal)).catch(console.error)
   }, []);
-  
 
   const [BBTBal, setBBTBal] = useState(0)
   useEffect(() => {

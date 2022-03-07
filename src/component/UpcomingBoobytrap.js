@@ -67,6 +67,7 @@ export default function UpcomingBoobytrap() {
       <div
         className="projectCard mx-2 my-4 col-md-3 px-1 py-2 pb-3 shadow"
         key={index}
+        style={{backgroundColor:"#A82323", color:"#fff"}}
       >
         <div id="projectHead" className="d-flex justify-content-between">
           <div className="w-100 text-start" style={{ paddingLeft: "30px" }}>
@@ -75,6 +76,7 @@ export default function UpcomingBoobytrap() {
             </h3>
             <a
               href={uProject.telegram}
+              className="text-light"
               style={
                 uProject.telegram.length > 2
                   ? { display: "inline-block" }
@@ -86,6 +88,7 @@ export default function UpcomingBoobytrap() {
             </a>
             <a
               href={uProject.twitter}
+              className="text-light"
               style={
                 uProject.twitter.length > 2
                   ? { display: "inline-block" }
@@ -97,6 +100,7 @@ export default function UpcomingBoobytrap() {
             </a>
             <a
               href={uProject.website}
+              className="text-light"
               style={
                 uProject.website.length > 2
                   ? { display: "inline-block" }
@@ -108,6 +112,7 @@ export default function UpcomingBoobytrap() {
             </a>
             <a
               href={uProject.discord}
+              className="text-light"
               style={
                 uProject.discord !== null
                   ? { display: "inline-block" }
@@ -119,6 +124,7 @@ export default function UpcomingBoobytrap() {
             </a>
             <a
               href={uProject.insta}
+              className="text-light"
               style={
                 uProject.instagram !== null
                   ? { display: "inline-block" }
